@@ -1,0 +1,2 @@
+include ':app', ':scaffold', ':iu', ':yoona'
+rootProject.name='android-scaffold'

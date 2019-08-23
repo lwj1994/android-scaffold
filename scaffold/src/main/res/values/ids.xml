@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="scaffold_fragment_base_list" type="id" />
+    <item name="scaffold_fragment_base_swipe" type="id" />
+    <item name="scaffold_toolbar" type="id" />
+    <item name="scaffold_activity_base_rootView" type="id" />
+</resources>
