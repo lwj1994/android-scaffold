@@ -1,2 +1,2 @@
-include ':app', ':scaffold', ':iu', ':yoona'
+include ':app', ':scaffold'
 rootProject.name='android-scaffold'

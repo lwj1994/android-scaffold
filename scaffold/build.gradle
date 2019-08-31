@@ -2,6 +2,21 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+ext {
+  libVersion = "0.0.1"
+  groupId = "com.lwjlol.scaffold"
+  artifactId = "core"
+  pkg_name = "scaffold"
+  libraryDescription = 'scaffold'
+  siteUrl = 'https://github.com/lwj1994/android-scaffold.git'
+  gitUrl = 'https://github.com/lwj1994/android-scaffold.git'
+  developerId = 'wenchieh'
+  developerName = 'wenchieh'
+  developerEmail = 'alwjlola@gmail.com'
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
 android {
   compileSdkVersion 29
 
@@ -82,3 +97,5 @@ dependencies {
   androidTestImplementation 'androidx.test:runner:1.2.0'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+apply from: '../deploy.gradle'
