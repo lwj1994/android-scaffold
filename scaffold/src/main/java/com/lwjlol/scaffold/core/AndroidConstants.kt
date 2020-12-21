@@ -8,6 +8,12 @@ import android.os.Build
  */
 
 
-val isSDK_M = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-val statusBarHeight = Resources.getSystem().getDimensionPixelSize(
-    Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"))
+val isSDK_23 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+val isSDK_29 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+val isSDK_30 = Build.VERSION.SDK_INT >= 30
+val statusBarHeight
+    get() = Resources.getSystem().getDimensionPixelSize(
+        Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")).coerceAtLeast(safeInsetTop)
+var safeInsetTop = 0
+
+var debugMode = false

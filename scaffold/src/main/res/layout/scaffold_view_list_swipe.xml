@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-  <com.lwjlol.android.scaffold.core.BaseListView
-      android:id="@id/scaffold_fragment_base_list"
+  <com.lwjlol.scaffold.core.ui.widget.BaseRecyclerView
+      android:id="@id/scaffold_fragment_base_recyclerview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       />

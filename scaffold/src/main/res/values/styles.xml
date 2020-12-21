@@ -1,23 +1,40 @@
 <resources>
 
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-  <style name="ScaffoldDialogTheme" parent="Theme.AppCompat.Dialog">
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowCloseOnTouchOutside">true</item>
-    <item name="colorPrimaryDark">@android:color/transparent</item>
-    <item name="colorPrimary">@android:color/transparent</item>
-    <item name="android:windowFullscreen">false</item>
-    <item name="android:windowIsFloating">false</item>
-    <item name="android:windowIsTranslucent">true</item>
-    <item name="android:backgroundDimEnabled">false</item>
-    <item name="android:windowContentOverlay">@null</item>
-    <item name="android:windowBackground">@android:color/transparent</item>
-  </style>
+    <style name="ScaffoldDialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <!--    snackBar-->
+    <color name="snackBarMsgText">#000000</color>
+    <color name="snackBarActionText">#79A7D3</color>
+    <color name="snackBarActionBg">#f5f5f5</color>
+    <color name="snackBarBg">#EED8AE</color>
+
+    <!--  snackbar-dark -->
+    <color name="snackBarMsgText_dark">#ffffff</color>
+    <color name="snackBarActionText_dark">#ffffff</color>
+    <color name="snackBarActionBg_dark">#2d2d2d</color>
+    <color name="snackBarBg_dark">#222222</color>
+    <color name="bottombarBackgroud_dark">#222222</color>
+
+
+    <color name="rootViewBg">#FFFFFF</color>
+    <color name="rootViewBg_dark">#171717</color>
+
 </resources>
