@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.ui
+package com.lwjlol.scaffold.ui
 
 import android.view.Gravity
 import android.view.ViewGroup

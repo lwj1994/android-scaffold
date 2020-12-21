@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.ui.widget
+package com.lwjlol.scaffold.ui.widget
 
 import android.content.Context
 import android.graphics.Color

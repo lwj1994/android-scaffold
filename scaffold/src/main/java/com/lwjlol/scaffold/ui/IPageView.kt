@@ -1,7 +1,7 @@
-package com.lwjlol.scaffold.core.ui
+package com.lwjlol.scaffold.ui
 
 import android.content.Context
-import com.lwjlol.scaffold.core.util.ToastUtil
+import com.lwjlol.scaffold.util.ToastUtil
 
 /**
  * 表示 fragment/Avtivity 页面

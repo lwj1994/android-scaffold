@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.mvrx
+package com.lwjlol.scaffold.mvrx
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -57,7 +57,7 @@ fun Fragment.simpleController(
  * Create a [BaseEpoxyController] that builds models with the given callback.
  * When models are built the current state of the viewmodel will be provided.
  */
-fun <S : PageState, A : MavericksViewModel<S>> Fragment.simpleController(
+fun <S : MvrxState, A : MavericksViewModel<S>> Fragment.simpleController(
     viewModel: A,
     lookup: SpanSizeLookup = GridLayoutManager.DefaultSpanSizeLookup(),
     buildModels: EpoxyController.(state: S) -> Unit
@@ -72,7 +72,7 @@ fun <S : PageState, A : MavericksViewModel<S>> Fragment.simpleController(
  * Create a [BaseEpoxyController] that builds models with the given callback.
  * When models are built the current state of the viewmodels will be provided.
  */
-fun <A : MavericksViewModel<B>, B : PageState, C : MavericksViewModel<D>, D : PageState> Fragment.simpleController(
+fun <A : MavericksViewModel<B>, B : MvrxState, C : MavericksViewModel<D>, D : MvrxState> Fragment.simpleController(
     viewModel1: A,
     viewModel2: C,
     buildModels: EpoxyController.(state1: B, state2: D) -> Unit
@@ -87,7 +87,7 @@ fun <A : MavericksViewModel<B>, B : PageState, C : MavericksViewModel<D>, D : Pa
  * Create a [BaseEpoxyController] that builds models with the given callback.
  * When models are built the current state of the viewmodels will be provided.
  */
-fun <A : MavericksViewModel<B>, B : PageState, C : MavericksViewModel<D>, D : PageState, E : MavericksViewModel<F>, F : PageState> Fragment.simpleController(
+fun <A : MavericksViewModel<B>, B : MvrxState, C : MavericksViewModel<D>, D : MvrxState, E : MavericksViewModel<F>, F : MvrxState> Fragment.simpleController(
     viewModel1: A,
     viewModel2: C,
     viewModel3: E,

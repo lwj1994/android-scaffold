@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.util;
+package com.lwjlol.scaffold.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

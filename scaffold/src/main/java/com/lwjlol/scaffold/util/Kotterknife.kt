@@ -7,7 +7,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.lwjlol.scaffold.core.epoxy.BaseEpoxyHolder
+import com.lwjlol.scaffold.epoxy.BaseEpoxyHolder
 import java.util.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty

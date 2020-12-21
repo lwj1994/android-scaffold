@@ -1,8 +1,8 @@
-package com.lwjlol.scaffold.core.dark
+package com.lwjlol.scaffold.dark
 
 import android.content.res.Configuration
-import com.lwjlol.scaffold.core.ScaffoldApplication
-import com.lwjlol.scaffold.core.util.mmkv
+import com.lwjlol.scaffold.ScaffoldApplication
+import com.lwjlol.scaffold.util.mmkv
 
 /**
  * 深色模式
@@ -13,7 +13,7 @@ object DarkMode {
     const val AUTO = -1
 
     // 深色模式强制的开关
-    val modeSwitch: Int by mmkv("dark_mode", AUTO, "com.lwjlol.scaffold")
+    var modeSwitch: Int by mmkv("dark_mode", AUTO, "com.lwjlol.scaffold")
     val isDark
         get() = isDarkMode(ScaffoldApplication.application.resources.configuration)
     val isLight

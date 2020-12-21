@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lwjlol.scaffold.core.ui.widget.BaseRecyclerView
+<com.lwjlol.scaffold.ui.widget.WenRecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/scaffold_fragment_base_recyclerview"
     android:layout_width="match_parent"

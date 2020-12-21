@@ -27,7 +27,7 @@ import com.lwjlol.imagehosting.utils.ThreadPoolUtil
 import com.lwjlol.ktx.buildRoundedCornerDrawable
 import com.lwjlol.ktx.colorInt
 import com.lwjlol.ktx.screenHeight
-import com.lwjlol.scaffold.core.ScaffoldApplication
+import com.lwjlol.scaffold.ScaffoldApplication
 import java.io.File
 
 /**

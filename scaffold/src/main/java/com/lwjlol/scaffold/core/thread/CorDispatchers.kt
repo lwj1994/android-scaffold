@@ -6,6 +6,9 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 
+/**
+ * 协程的调度器
+ */
 object CorDispatchers {
     private val ioCoroutineDispatcher by lazyUnsafe {
         ThreadPoolUtil.THREAD_POOL_EXECUTOR.asCoroutineDispatcher()

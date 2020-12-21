@@ -1,7 +1,8 @@
-package com.lwjlol.scaffold.core.util
+package com.lwjlol.scaffold.util
 
+import android.content.Context
 import android.widget.Toast
-import com.lwjlol.scaffold.core.ScaffoldApplication
+import com.lwjlol.scaffold.ScaffoldApplication
 
 object ToastUtil {
     private val context = ScaffoldApplication.application
@@ -20,5 +21,3 @@ object ToastUtil {
         toast.show()
     }
 }
-
-

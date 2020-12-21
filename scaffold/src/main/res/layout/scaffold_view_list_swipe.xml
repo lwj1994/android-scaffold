@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-  <com.lwjlol.scaffold.core.ui.widget.BaseRecyclerView
+  <com.lwjlol.scaffold.ui.widget.WenRecyclerView
       android:id="@id/scaffold_fragment_base_recyclerview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"

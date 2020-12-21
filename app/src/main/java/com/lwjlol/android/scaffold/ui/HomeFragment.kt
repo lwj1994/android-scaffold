@@ -1,8 +1,6 @@
 package com.lwjlol.android.scaffold.ui
 
-import android.os.Bundle
-import android.view.View
-import com.lwjlol.scaffold.core.ui.BaseFragment
+import com.lwjlol.scaffold.ui.BaseFragment
 
 /**
  * @author luwenjie on 2019-09-02 13:57:08

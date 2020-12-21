@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.mvrx
+package com.lwjlol.scaffold.mvrx
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -10,13 +10,13 @@ import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.Fail
 import com.airbnb.mvrx.Loading
 import com.airbnb.mvrx.Success
-import com.lwjlol.scaffold.core.ui.widget.BaseRecyclerView
+import com.lwjlol.scaffold.ui.widget.WenRecyclerView
 
 /**
  * @author luwenjie on 2020/5/21 17:27:53
  */
-abstract class ListHelper(
-    private val recyclerView: BaseRecyclerView,
+abstract class MvrxListHelper(
+    private val recyclerView: WenRecyclerView,
     private val swipeRefreshLayout: SwipeRefreshLayout? = null,
     var emptyText: String = "",
     var onClickEmptyView: () -> Unit = {}
@@ -32,25 +32,25 @@ abstract class ListHelper(
         })
     }
 
-    fun checkStatus(
+    /**
+     * 检查请求的结果状态
+     */
+    fun Async<*>.checkStatus(
         epoxyController: EpoxyController,
-        list: List<*>,
-        request: Async<*>
+        list: List<*>
     ): Boolean {
         if (list.isEmpty()) {
-            epoxyController.run {
-                when (request) {
-                    is Loading -> {
-                    }
-                    is Success -> {
-                        emptyView(this, emptyText)
-                    }
-                    is Fail -> {
-                        failView(this, request.error.message ?: "", onClickEmptyView)
-                    }
-                    else -> {
+            when (this) {
+                is Loading -> {
+                }
+                is Success -> {
+                    emptyView(epoxyController, emptyText)
+                }
+                is Fail -> {
+                    failView(epoxyController, error.message ?: "", onClickEmptyView)
+                }
+                else -> {
 
-                    }
                 }
             }
             return false
@@ -123,13 +123,23 @@ abstract class ListHelper(
         loadMore: () -> Unit
     ) {
         epoxyController.run {
-            verticalLoadingView(this)
+            verticalLoadingView(this, size, canLoadMore, tag, loadMore)
         }
     }
 
     abstract fun emptyView(controller: EpoxyController, emptyText: String)
 
-    abstract fun failView(controller: EpoxyController, errorMsg: String, onClickEmptyView: () -> Unit)
+    abstract fun failView(
+        controller: EpoxyController,
+        errorMsg: String,
+        onClickEmptyView: () -> Unit
+    )
 
-    abstract fun verticalLoadingView(controller: EpoxyController)
+    abstract fun verticalLoadingView(
+        controller: EpoxyController,
+        size: Int,
+        canLoadMore: Boolean,
+        tag: String,
+        loadMore: () -> Unit
+    )
 }

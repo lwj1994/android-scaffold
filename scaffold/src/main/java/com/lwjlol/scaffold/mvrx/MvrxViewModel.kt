@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.mvrx
+package com.lwjlol.scaffold.mvrx
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -15,7 +15,7 @@ import kotlin.coroutines.CoroutineContext
 /**
  * 有状态的 viewModel
  */
-abstract class StatefulViewModel<S : PageState>(
+abstract class MvrxViewModel<S : MvrxState>(
     initialState: S
 ) : MavericksViewModel<S>(initialState) {
     companion object {
@@ -29,7 +29,7 @@ abstract class StatefulViewModel<S : PageState>(
         request: Async<*>,
         loadMore: Boolean
     ) {
-        ListHelper.postLoadingState(loadingLiveData, request, loadMore)
+        MvrxListHelper.postLoadingState(loadingLiveData, request, loadMore)
     }
 
     fun observeLoadingState(

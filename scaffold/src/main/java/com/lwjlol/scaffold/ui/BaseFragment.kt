@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.ui
+package com.lwjlol.scaffold.ui
 
 import android.content.Context
 import android.content.res.Configuration
@@ -11,12 +11,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.lifecycleScope
 import com.lwjlol.ktx.colorInt
 import com.lwjlol.ktx.lazyUnsafe
 import com.lwjlol.ktx.match_match
 import com.lwjlol.scaffold.R
-import com.lwjlol.scaffold.core.dark.DarkMode
+import com.lwjlol.scaffold.dark.DarkMode
 import com.lwjlol.scaffold.core.thread.CorDispatchers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -35,7 +36,19 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes)
     }
     protected lateinit var loadingHelper: LoadingHelper
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        lifecycleScope.launchWhenStarted {
+            onDarkModeChanged()
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val onCreateView = super.onCreateView(inflater, container, savedInstanceState)
         if (coordinatorLayout.isEmpty() && onCreateView != null) {
             coordinatorLayout.addView(onCreateView)
@@ -59,10 +72,6 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes)
         onDarkModeChanged(DarkMode.isDarkMode(newConfig))
     }
 
-    override fun onStart() {
-        super.onStart()
-        onDarkModeChanged()
-    }
 
     /**
      * 深色模式发生变化

@@ -1,14 +1,14 @@
 package com.lwjlol.android.scaffold
 
 import android.os.Bundle
-import com.lwjlol.scaffold.core.ktx.bindView
-import com.lwjlol.scaffold.core.ui.BaseScaffoldActivity
+import androidx.savedstate.SavedStateRegistry
+import com.lwjlol.scaffold.ui.BaseActivity
 import wenchieh.lu.bottombar.BottomBar
 
-class MainActivity : BaseScaffoldActivity(R.layout.activity_main) {
-    private val bottomBar: BottomBar by bindView(R.id.activity_main_BottomBar)
+class MainActivity : BaseActivity() {
 
-
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
 }

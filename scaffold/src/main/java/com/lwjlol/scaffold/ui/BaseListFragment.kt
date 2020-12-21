@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.ui
+package com.lwjlol.scaffold.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,14 +12,14 @@ import com.airbnb.epoxy.EpoxyVisibilityTracker
 import com.airbnb.mvrx.MavericksView
 import com.lwjlol.ktx.lazyUnsafe
 import com.lwjlol.scaffold.R
-import com.lwjlol.scaffold.core.mvrx.ListHelper
-import com.lwjlol.scaffold.core.ui.widget.BaseRecyclerView
-import com.lwjlol.scaffold.core.ui.widget.Toolbar
+import com.lwjlol.scaffold.mvrx.MvrxListHelper
+import com.lwjlol.scaffold.ui.widget.WenRecyclerView
+import com.lwjlol.scaffold.ui.widget.Toolbar
 
 abstract class BaseListFragment : BaseFragment(R.layout.scaffold_fragment_base_refreshlist), MavericksView {
     protected lateinit var toolbar: Toolbar
     protected lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    protected lateinit var recyclerView: BaseRecyclerView
+    protected lateinit var recyclerView: WenRecyclerView
     protected open val hasToolbar = false
     protected val listHelper by lazyUnsafe { listHelper() }
     protected val epoxyController by lazyUnsafe { epoxyController() }
@@ -56,21 +56,21 @@ abstract class BaseListFragment : BaseFragment(R.layout.scaffold_fragment_base_r
     protected open fun initLoadingState(loadingState: MutableLiveData<Pair<Int, String>>) {
         listHelper.initLoadingState(this, loadingState) { state, msg ->
             when (state) {
-                ListHelper.LOADING -> {
+                MvrxListHelper.LOADING -> {
                 }
-                ListHelper.LOADING_MORE -> {
+                MvrxListHelper.LOADING_MORE -> {
                 }
-                ListHelper.LOAD_SUCCESS -> {
+                MvrxListHelper.LOAD_SUCCESS -> {
                     listHelper.showRefreshing(false)
                 }
-                ListHelper.LOAD_FAIL -> {
+                MvrxListHelper.LOAD_FAIL -> {
                     if (isResumed) {
                         showSnackBar(msg, null)
                     }
                 }
-                ListHelper.LOAD_MORE_SUCCESS -> {
+                MvrxListHelper.LOAD_MORE_SUCCESS -> {
                 }
-                ListHelper.LOAD_MORE_FAIL -> {
+                MvrxListHelper.LOAD_MORE_FAIL -> {
                     // 加载更多失败. 刷新加载更多的信息
                     epoxyController.requestModelBuild()
                 }
@@ -99,7 +99,7 @@ abstract class BaseListFragment : BaseFragment(R.layout.scaffold_fragment_base_r
 
     abstract fun onRefresh()
 
-    abstract fun listHelper(): ListHelper
+    abstract fun listHelper(): MvrxListHelper
 
     abstract fun epoxyController(): EpoxyController
 

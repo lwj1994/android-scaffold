@@ -1,9 +1,10 @@
-package com.lwjlol.scaffold.core
+package com.lwjlol.scaffold
 
 import android.app.Application
 import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDex
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.Utils
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.core.FlipperClient
@@ -20,6 +21,8 @@ abstract class ScaffoldApplication : Application() {
         super.onCreate()
         MultiDex.install(this)
         application = this
+
+        Utils.init(this)
         // 设置日志
         LogUtils.getConfig()
             // 日志的总开关
@@ -29,7 +32,6 @@ abstract class ScaffoldApplication : Application() {
             .setSingleTagSwitch(true)
             // 文件开关
             .setLog2FileSwitch(false)
-
 
     }
 
@@ -47,6 +49,7 @@ abstract class ScaffoldApplication : Application() {
     companion object {
         @JvmStatic
         lateinit var application: ScaffoldApplication
+
         @JvmStatic
         lateinit var networkFlipperPlugin: NetworkFlipperPlugin
         private const val TAG = "ScaffoldApplication"

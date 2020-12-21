@@ -3,9 +3,9 @@ package com.lwjlol.scaffold.core.network
 import android.util.Log
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.lwjlol.imagehosting.utils.ThreadPoolUtil.THREAD_POOL_EXECUTOR
-import com.lwjlol.scaffold.core.ScaffoldApplication
-import com.lwjlol.scaffold.core.ScaffoldApplication.Companion.application
-import com.lwjlol.scaffold.core.debugMode
+import com.lwjlol.scaffold.ScaffoldApplication
+import com.lwjlol.scaffold.ScaffoldApplication.Companion.application
+import com.lwjlol.scaffold.debugMode
 import okhttp3.Cache
 import okhttp3.ConnectionPool
 import okhttp3.Dispatcher

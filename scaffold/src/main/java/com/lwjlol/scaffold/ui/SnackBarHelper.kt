@@ -1,4 +1,4 @@
-package com.lwjlol.scaffold.core.ui
+package com.lwjlol.scaffold.ui
 
 import android.graphics.Typeface
 import android.view.Gravity
@@ -16,9 +16,9 @@ import com.lwjlol.ktx.dpF
 import com.lwjlol.ktx.lazyUnsafe
 import com.lwjlol.ktx.setRoundedBackground
 import com.lwjlol.scaffold.R
-import com.lwjlol.scaffold.core.ScaffoldApplication
-import com.lwjlol.scaffold.core.dark.DarkMode
-import com.lwjlol.scaffold.core.dark.IDarkMode
+import com.lwjlol.scaffold.ScaffoldApplication
+import com.lwjlol.scaffold.dark.DarkMode
+import com.lwjlol.scaffold.dark.IDarkMode
 
 /**
  * @author luwenjie on 2020/4/4 09:41:17
