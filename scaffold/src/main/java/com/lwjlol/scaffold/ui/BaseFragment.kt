@@ -11,14 +11,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.lifecycleScope
 import com.lwjlol.ktx.colorInt
 import com.lwjlol.ktx.lazyUnsafe
 import com.lwjlol.ktx.match_match
 import com.lwjlol.scaffold.R
-import com.lwjlol.scaffold.dark.DarkMode
 import com.lwjlol.scaffold.core.thread.CorDispatchers
+import com.lwjlol.scaffold.dark.DarkModeUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.async
@@ -69,7 +68,7 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes)
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        onDarkModeChanged(DarkMode.isDarkMode(newConfig))
+        onDarkModeChanged(DarkModeUtil.getDarkMode(newConfig))
     }
 
 
@@ -78,7 +77,7 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes)
      * 必须在 activity 节点注册  android:configChanges="uiMode"
      * @param isDark 是否是深色模式
      */
-    protected open fun onDarkModeChanged(isDark: Boolean = DarkMode.isDark) {
+    protected open fun onDarkModeChanged(isDark: Boolean = DarkModeUtil.isDarkMode) {
         if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
             return
         }
