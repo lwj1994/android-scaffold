@@ -1,5 +1,5 @@
 package com.lwjlol.scaffold.dark
 
 interface IDarkMode {
-    fun onDarkModeChanged()
+    fun onDarkModeChanged(dark: Boolean)
 }

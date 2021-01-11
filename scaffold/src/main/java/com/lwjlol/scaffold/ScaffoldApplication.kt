@@ -12,6 +12,7 @@ import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
+import com.lwjlol.ktx.Initializer
 
 /**
  * @author luwenjie on 2019-08-23 14:12:55
@@ -22,6 +23,7 @@ abstract class ScaffoldApplication : Application() {
         MultiDex.install(this)
         application = this
 
+        Initializer.initUtilsKtx(this)
         Utils.init(this)
         // 设置日志
         LogUtils.getConfig()

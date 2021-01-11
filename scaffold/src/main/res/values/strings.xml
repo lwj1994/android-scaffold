@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">scaffold</string>
     <string name="snackbar_ok">好的</string>
+    <string-array name="darkmode_list">
+        <item>深色模式</item>
+        <item>浅色模式</item>
+        <item>跟随系统</item>
+    </string-array>
 </resources>
