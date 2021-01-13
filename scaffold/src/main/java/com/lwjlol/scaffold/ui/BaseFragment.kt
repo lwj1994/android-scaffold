@@ -12,7 +12,7 @@ import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import com.lwjlol.ktx.colorInt
+import com.lwjlol.ktx.getColorInt
 import com.lwjlol.ktx.lazyUnsafe
 import com.lwjlol.ktx.match_match
 import com.lwjlol.scaffold.R
@@ -83,9 +83,9 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes)
         }
         // 深色模式下做出统一的 ui 变换
         if (!isDark) {
-            view?.setBackgroundColor(R.color.rootViewBg.colorInt)
+            view?.setBackgroundColor(requireContext().getColorInt(R.color.rootViewBg))
         } else {
-            view?.setBackgroundColor(R.color.rootViewBg_dark.colorInt)
+            view?.setBackgroundColor(requireContext().getColorInt(R.color.rootViewBg_dark))
         }
     }
 
