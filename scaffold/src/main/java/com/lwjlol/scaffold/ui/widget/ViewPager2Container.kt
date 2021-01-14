@@ -3,6 +3,7 @@ package com.lwjlol.scaffold.ui.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.View
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
@@ -12,7 +13,11 @@ import kotlin.math.abs
  * @date 2020/12/28
  * 处理ViewPager2嵌套引起的滑动冲突，包括竖直滑动与水平滑动。
  */
-class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
+class ViewPager2Container @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private var mViewPager2: ViewPager2? = null
     private var disallowParentInterceptDownEvent = true
@@ -21,6 +26,7 @@ class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: Att
 
     override fun onFinishInflate() {
         super.onFinishInflate()
+        if (mViewPager2 != null) return
         for (i in 0 until childCount) {
             val childView = getChildAt(i)
             if (childView is ViewPager2) {
@@ -31,6 +37,34 @@ class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: Att
         if (mViewPager2 == null) {
             throw IllegalStateException("The root child of ViewPager2Container must contains a ViewPager2")
         }
+    }
+
+    override fun addView(
+        child: View?,
+        index: Int,
+        params: android.view.ViewGroup.LayoutParams?
+    ) {
+        super.addView(child, index, params)
+        initViewPager(child)
+    }
+
+    private fun initViewPager(child: View?) {
+        if (childCount == 1) {
+            throw IllegalStateException("ViewPager2Container 只能有一个子View")
+        }
+        if (child is ViewPager2) {
+            this.mViewPager2 = child
+        }
+    }
+
+    override fun addViewInLayout(
+        child: View?,
+        index: Int,
+        params: android.view.ViewGroup.LayoutParams?,
+        preventRequestLayout: Boolean
+    ): Boolean {
+        initViewPager(child)
+        return super.addViewInLayout(child, index, params, preventRequestLayout)
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
@@ -57,12 +91,18 @@ class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: Att
                     onHorizontalActionMove(endX, disX, disY)
                 }
             }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> parent.requestDisallowInterceptTouchEvent(false)
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> parent.requestDisallowInterceptTouchEvent(
+                false
+            )
         }
         return super.onInterceptTouchEvent(ev)
     }
 
-    private fun onHorizontalActionMove(endX: Int, disX: Int, disY: Int) {
+    private fun onHorizontalActionMove(
+        endX: Int,
+        disX: Int,
+        disY: Int
+    ) {
         if (mViewPager2?.adapter == null) {
             return
         }
@@ -72,15 +112,21 @@ class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: Att
             if (currentItem == 0 && endX - startX > 0) {
                 parent.requestDisallowInterceptTouchEvent(false)
             } else {
-                parent.requestDisallowInterceptTouchEvent(currentItem != itemCount - 1
-                        || endX - startX >= 0)
+                parent.requestDisallowInterceptTouchEvent(
+                    currentItem != itemCount - 1
+                            || endX - startX >= 0
+                )
             }
         } else if (disY > disX) {
             parent.requestDisallowInterceptTouchEvent(false)
         }
     }
 
-    private fun onVerticalActionMove(endY: Int, disX: Int, disY: Int) {
+    private fun onVerticalActionMove(
+        endY: Int,
+        disX: Int,
+        disY: Int
+    ) {
         if (mViewPager2?.adapter == null) {
             return
         }
@@ -90,8 +136,10 @@ class ViewPager2Container @JvmOverloads constructor(context: Context, attrs: Att
             if (currentItem == 0 && endY - startY > 0) {
                 parent.requestDisallowInterceptTouchEvent(false)
             } else {
-                parent.requestDisallowInterceptTouchEvent(currentItem != itemCount - 1
-                        || endY - startY >= 0)
+                parent.requestDisallowInterceptTouchEvent(
+                    currentItem != itemCount - 1
+                            || endY - startY >= 0
+                )
             }
         } else if (disX > disY) {
             parent.requestDisallowInterceptTouchEvent(false)
